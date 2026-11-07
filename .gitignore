@@ -1,0 +1,14 @@
+# npx skills add 本地测试碎屑（勿入库）
+skills-lock.json
+.zcode/
+.claude/
+.agents/
+
+# 系统与编辑器
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+*.swp
+*~
