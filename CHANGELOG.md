@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.2.1 (2026-11-18)
+
+基于「目录叫 ssot/ 而非 gsdd/，方法论身份如何体现」的三路审计（ChatGPT/Claude/Gemini 一致裁决混合方案：目录名描述内容语义，身份落在文字锚点）：
+
+### 新增
+- **身份标注**：`ssot/README.md` 首行加「（GSDD 治理）」，头部新增治理方法声明（GSDD v0.2 + 规范仓库链接 + 「本目录是唯一事实来源，不是普通文档目录」）；`entry-pointer.md` GSDD 段首条写明「本项目 ssot/ 由 skill-gsdd 治理」与五个命令。
+- **身份体检**：`/gsdd-audit` 结构检查新增提示级项——README 首行缺「GSDD」标注时提醒补齐（不定罪）。
+- **访谈保护**：`/gsdd-init` 访谈替换 README 首行标题时，须保留行尾身份标注。
+
+### 裁决理由（存档）
+- 目录名描述「内容是什么」（SSOT），方法论描述「如何治理」（GSDD），职责分离；agent 读取路径是入口文件 → ssot/README.md，身份放这两处每次会话必读；改名为 gsdd/ 会在方法论演进时迫使所有项目迁移路径、断掉 change-log/evidence 引用，且团队停用 skill 后 ssot/ 内容仍是有效的项目事实。
+
 ## v0.2.0 (2026-11-18)
 
 基于「程序员必须亲自掌握数据库 schema 与关键技术选型」的技术审计（ChatGPT/Claude/Gemini 三路交叉 + 原文核验）升级：

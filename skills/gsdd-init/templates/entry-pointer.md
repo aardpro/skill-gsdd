@@ -1,5 +1,6 @@
 ## GSDD（治理规范驱动开发）
 
+- 本项目 `ssot/` 由 skill-gsdd（GSDD 方法论）治理：`ssot/` 是项目唯一事实来源，必须遵循其变更、验收与审批规则；命令为 /gsdd-init/load/change/accept/audit。
 - 会话开始：先读 `ssot/README.md`（路由器），按任务取层，不要全文扫 `ssot/`。
 - 渐进披露：层文件超过全文阈值时禁止全文读取（阈值默认 300 行、以 `ssot/README.md` 头部声明为准），先 grep 其 `## 索引` 段与小节标题，按行号取相关段。
 - AI 对 `ssot/` 全层只读；规范缺口走提案通道（`/gsdd-change` 起草，人采纳才落盘），不停工等答复，先按现行 SSOT 干活。

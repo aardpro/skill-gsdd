@@ -1,4 +1,6 @@
-# <项目名> - <一句话定位>
+# <项目名> - <一句话定位>（GSDD 治理）
+
+> 治理方法：GSDD（Governed Spec-Driven Development）v0.2，规范与命令见 skill-gsdd（github.com/aardpro/skill-gsdd）。本目录是项目的唯一事实来源，不是普通文档目录。
 
 ## 原则
 1. 唯一出处：同一事实/标准只在一处定义（ssot/），其余地方只引用。
