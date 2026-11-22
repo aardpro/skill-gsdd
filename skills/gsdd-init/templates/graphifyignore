@@ -1,0 +1,5 @@
+# 图谱索引排除声明（GSDD 防护文件）
+# 用途：防止规范目录被代码图谱工具（graphify / codebase-memory-mcp）索引为事实来源。
+# 图谱是索引，不是事实来源；ssot/ 的唯一出处地位不得被图谱稀释。
+ssot/
+evidence/

@@ -10,7 +10,7 @@
 
 | 命令 | 干什么 | 可写 ssot/? |
 |---|---|---|
-| `/gsdd-init` | 中性骨架（三层十文件）→ 编程工具入口接线（CLAUDE.md/AGENTS.md…）→ 问答式收窄 | 采纳后 |
+| `/gsdd-init` | 中性骨架（三层十文件）→ 图谱防护文件（`.graphifyignore`/`.cbmignore`）→ 编程工具入口接线（CLAUDE.md/AGENTS.md…）→ 问答式收窄 | 采纳后 |
 | `/gsdd-load` | 索引先行、按需取段，产出编号级任务简报（默认 ≤2000 token，约 120 行；ssot/README 可调） | 否 |
 | `/gsdd-change` | 变更提案：change-log 条目 + 波及 diff；采纳后按锁死顺序落盘 | 采纳后 |
 | `/gsdd-accept` | 沿剧本按验收项编号走查/跑测试，证据归档 `evidence/` | 否 |
@@ -24,6 +24,10 @@
 4. **域拆分阀**：>400 行按域拆 `<名>-<域>.md`，原文件退化为纯索引；入口文件集不变，拆分文件必须在入口索引登记。
 
 阈值在 `ssot/README.md` 头部声明，项目可调。
+
+## 图谱防护
+
+`/gsdd-init` 会在项目根写入 `.graphifyignore` 与 `.cbmignore`（各含 `ssot/`、`evidence/` 两行，幂等只补缺失行），声明规范目录不进伴侣图谱工具（graphify / codebase-memory-mcp）的索引——图谱是索引不是事实来源，规范目录不得被吸入。文件与是否已安装图谱工具无关：防护先落地，后装工具也受保护。`/gsdd-audit` 会对"存在图谱工具痕迹但缺防护文件"的项目给出提示级报告。
 
 ## 布局
 

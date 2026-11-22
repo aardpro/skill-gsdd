@@ -33,6 +33,7 @@ ssot/
 2. 一个都没有 → 创建 `CLAUDE.md`。
 3. 对每个入口文件：把本 skill 目录下 `templates/entry-pointer.md` 的 GSDD 段**追加**进去（绝不覆盖已有内容）；文件里已含「GSDD」字样的跳过，不重复添加。
 4. tests/ 引用约定：项目根没有 `tests/` 目录 → 创建 `tests/README.md`，写明引用格式（测试文件头注释或用例名标注所验收的 A 编号，如 `# A3`），这是 `/gsdd-audit` 编号对账的依据。已有 tests/ → 在其中补 `README.md` 说明同一格式（不动现有测试代码）。
+5. 图谱防护文件（无条件写入，幂等）：把本 skill 目录下 `templates/graphifyignore` 复制为项目根 `.graphifyignore`，`templates/cbmignore` 复制为项目根 `.cbmignore`（内容各两行：`ssot/`、`evidence/`，头部注释说明用途）。文件已存在 → 只补缺失行，不覆盖用户自定义内容。与是否已安装图谱工具（graphify / codebase-memory-mcp）无关——防护先落地，后装工具也受保护；规范目录不得被图谱索引为事实来源。
 
 ## 第三步：问答式收窄（AI 只起草，用户采纳才写入 ssot/）
 

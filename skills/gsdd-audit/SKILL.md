@@ -1,6 +1,6 @@
 ---
 name: gsdd-audit
-description: GSDD SSOT 体检：入口结构、编号引用完整性、索引一致性、只追加约束、单向门完备性、迁移对账、规模预警。只报告不修改。
+description: GSDD SSOT 体检：入口结构、编号引用完整性、索引一致性、只追加约束、单向门完备性、迁移对账、规模预警、图谱防护文件。只报告不修改。
 disable-model-invocation: true
 ---
 
@@ -23,3 +23,4 @@ disable-model-invocation: true
 6. **单向门完备性**：decisions.md 里标记单向门的条目，替代方案、回退成本、批准人三项缺任一 → 违规；schema/stack 里标注单向门的条目若无对应 D 号 → 提示补决策记录。
 7. **迁移对账（启发式，只读）**：schema.md 条目登记的迁移编号与代码库 migration 目录（按常见命名探测）对账——落后、对不上只提示人工复核，不定罪；schema 引用的字段/表在 migration 中无迹可循的候选点提示复核。
 8. **规模预警**：单层文件超过拆分阈值（README 头部声明，默认 400 行）→ 给出按域拆分建议（`<名>-<域>.md`，原文件退化为纯索引）；超过全文阈值（默认 300 行）→ 提醒读取纪律已生效。
+9. **图谱防护文件（提示级）**：项目根存在图谱工具痕迹（`graphify-out/`、`.codebase-memory/`）但缺 `.graphifyignore` / `.cbmignore`，或文件缺 `ssot/`、`evidence/` 行 → 提示补建/补行（本为 `/gsdd-init` 自动写入的防护文件；缺它的后果是图谱把规范目录吸成事实的第二出处）。
