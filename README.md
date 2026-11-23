@@ -11,10 +11,12 @@
 | 命令 | 干什么 | 可写 ssot/? |
 |---|---|---|
 | `/gsdd-init` | 中性骨架（三层十文件）→ 图谱防护文件（`.graphifyignore`/`.cbmignore`）→ 编程工具入口接线（CLAUDE.md/AGENTS.md…）→ 问答式收窄 | 采纳后 |
-| `/gsdd-load` | 索引先行、按需取段，产出编号级任务简报（默认 ≤2000 token，约 120 行；ssot/README 可调） | 否 |
-| `/gsdd-change` | 变更提案：change-log 条目 + 波及 diff；采纳后按锁死顺序落盘 | 采纳后 |
+| `/gsdd-load` | **开始新任务**：索引先行、按需取段，产出编号级任务简报，判定下一步——直接实现还是走 `/gsdd-change` | 否 |
+| `/gsdd-change` | **规范要变时**（load/accept 发现缺口后走的岔路）：变更提案 change-log 条目 + 波及 diff；采纳后按锁死顺序落盘 | 采纳后 |
 | `/gsdd-accept` | 沿剧本按验收项编号走查/跑测试，证据归档 `evidence/` | 否 |
 | `/gsdd-audit` | 体检：结构 / 编号通货 / 索引一致性 / 只追加 / 规模预警 | 否（只报告） |
+
+使用节奏：任务开始一律先 `/gsdd-load`——规范变没变由简报判断，不靠记忆：任务已被 R/A 号覆盖 → 直接实现 → `/gsdd-accept`；简报暴露缺口（需求没登记 / 验收没覆盖 / 术语缺口径）→ `/gsdd-change` → 采纳 → 再 `/gsdd-load` → 实现 → `/gsdd-accept`。accept 走查再发现缺口也汇入 `/gsdd-change`；`/gsdd-audit` 定期体检。
 
 ## 渐进披露（四级）
 
