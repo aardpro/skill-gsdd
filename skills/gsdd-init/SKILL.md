@@ -33,7 +33,7 @@ ssot/
 2. 一个都没有 → 创建 `CLAUDE.md`。
 3. 对每个入口文件：把本 skill 目录下 `templates/entry-pointer.md` 的 GSDD 段**追加**进去（绝不覆盖已有内容）；文件里已含「GSDD」字样的跳过，不重复添加。
 4. tests/ 引用约定：项目根没有 `tests/` 目录 → 创建 `tests/README.md`，写明引用格式（测试文件头注释或用例名标注所验收的 A 编号，如 `# A3`），这是 `/gsdd-audit` 编号对账的依据。已有 tests/ → 在其中补 `README.md` 说明同一格式（不动现有测试代码）。
-5. 图谱防护文件（无条件写入，幂等）：把本 skill 目录下 `templates/graphifyignore` 复制为项目根 `.graphifyignore`，`templates/cbmignore` 复制为项目根 `.cbmignore`（内容各两行：`ssot/`、`evidence/`，头部注释说明用途）。文件已存在 → 只补缺失行，不覆盖用户自定义内容。与是否已安装图谱工具（graphify / codebase-memory-mcp）无关——防护先落地，后装工具也受保护；规范目录不得被图谱索引为事实来源。
+5. 图谱防护文件（无条件写入，幂等）：把本 skill 目录下 `templates/graphifyignore` 复制为项目根 `.graphifyignore`，`templates/cbmignore` 复制为项目根 `.cbmignore`（两文件内容相同，以模板为唯一内容出处，条目清单以模板为准不在此复述——GSDD 规范防护段 `ssot/`、`evidence/` 永不索引；其余为构建/打包产物、本地临时产物、AI 编程工具与 IDE 会话/状态目录、图谱工具自身产物、OS 杂物各排除段；尾部注释留本地密钥/运行时配置的自行追加位，不硬编码项目私有文件名）。文件已存在 → 只补缺失行，不覆盖用户自定义内容。与是否已安装图谱工具（graphify / codebase-memory-mcp）无关——防护先落地，后装工具也受保护；规范目录不得被图谱索引为事实来源。
 
 ## 第三步：问答式收窄（AI 只起草，用户采纳才写入 ssot/）
 

@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.2.4 (2026-11-22)
+
+- **图谱防护文件扩容**：`.graphifyignore`/`.cbmignore` 模板在 GSDD 规范防护段（`ssot/`、`evidence/`）之外新增六类排除段——构建/打包产物（`build/`、`dist/`、`*.log`；graphify 默认按目录名剪枝同名目录，显式声明防工具版本变更）、本地临时产物（`devlog/`、`exports/`、`tmp/` 等）、AI 编程工具会话/状态目录（`.zcode/`、`.claude/`、`.codex/`、`.opencode/`、`.trae/`、`.qoder/`、`.gemini/`、`.cursor/`、`.windsurf/`、`.agents/` 等）、IDE 工作区/缓存目录（`.idea/`、`.vscode/`、`.vs/` 等）、图谱工具自身产物（`graphify-out/`、`.codebase-memory/`、`.graphify/`，防自索引）、OS 杂物；尾部注释留本地密钥/运行时配置的自行追加位，不硬编码项目私有文件名。模板为唯一内容出处，`/gsdd-init` 幂等只补缺失行的语义不变；`/gsdd-audit` 仍以 `ssot/`、`evidence/` 两行为防护关键行。
+
+## v0.2.3 (2026-11-22)
+
+- **图谱防护文件**：`/gsdd-init` 第二步无条件写入项目根 `.graphifyignore`/`.cbmignore`（`ssot/`、`evidence/` 排除声明，幂等只补缺失行，与是否已安装图谱工具无关——防护先落地，后装工具也受保护）；`/gsdd-audit` 新增提示级检查：有图谱工具痕迹（`graphify-out/`、`.codebase-memory/`）但缺防护文件或缺关键行时提示补建/补行。
+
 ## v0.2.2 (2026-11-22)
 
 - **/gsdd-load 简报阈值 2000 改默认值**：硬上限 → 默认值（约 120 行），与 300/400 行阈值并列声明在 `ssot/README.md` 头部，项目可调。

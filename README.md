@@ -27,18 +27,36 @@
 
 ## 图谱防护
 
-`/gsdd-init` 会在项目根写入 `.graphifyignore` 与 `.cbmignore`（各含 `ssot/`、`evidence/` 两行，幂等只补缺失行），声明规范目录不进伴侣图谱工具（graphify / codebase-memory-mcp）的索引——图谱是索引不是事实来源，规范目录不得被吸入。文件与是否已安装图谱工具无关：防护先落地，后装工具也受保护。`/gsdd-audit` 会对"存在图谱工具痕迹但缺防护文件"的项目给出提示级报告。
+`/gsdd-init` 会在项目根写入 `.graphifyignore` 与 `.cbmignore`（两文件内容相同，幂等只补缺失行，条目全清单见模板）：GSDD 规范防护段声明 `ssot/`、`evidence/` 不进伴侣图谱工具（graphify / codebase-memory-mcp）的索引——图谱是索引不是事实来源，规范目录不得被吸入；另带构建产物、本地临时产物、AI 编程工具与 IDE 会话/状态目录（`.zcode/`、`.claude/`、`.codex/`、`.opencode/`、`.trae/`、`.qoder/`、`.cursor/`、`.idea/`、`.vscode/` 等）、图谱工具自身产物等排除段，图谱只保留源码与有效文档。文件与是否已安装图谱工具无关：防护先落地，后装工具也受保护。`/gsdd-audit` 会对"存在图谱工具痕迹但缺防护文件"的项目给出提示级报告。
 
 ## 布局
 
+`/gsdd-init` 在目标项目新建的文件与功能（中性骨架先落盘，内容靠问答式收窄逐步填充）：
+
 ```text
-skills/                        # skills CLI 的规范容器（勿改名，见安装①）
-├── gsdd-init/                 # SKILL.md + templates/（ssot 中性骨架模板 + entry-pointer.md）
-├── gsdd-load/
-├── gsdd-change/
-├── gsdd-accept/
-└── gsdd-audit/
+<项目根>/
+├── ssot/                     # 唯一事实来源（AI 只读，变更走 /gsdd-change）：三层十文件 + 路由器
+│   ├── README.md             # 路由器：治理规则头部 + 文件清单 + 阈值声明；工具入口只指向它
+│   ├── L0-requirements/      # 做什么
+│   │   ├── product.md        # 用户、核心价值、范围边界（逼问「不做什么」）
+│   │   ├── requirements.md   # 现行需求，编号 R1…；历史只进 change-log
+│   │   └── change-log.md     # 只追加的变更历史：日期、需求、波及文件
+│   ├── L1-facts/             # 是什么
+│   │   ├── glossary.md       # 术语口径，一条一个定义
+│   │   ├── design.md         # 架构总览与边界：组件关系、数据流、关键配置
+│   │   ├── schema.md         # 实体/字段/约束，编号 S1…，每条映射 R 号与术语
+│   │   ├── stack.md          # 组件、版本、运行约束，关键选型引用 D 号
+│   │   └── decisions.md      # 关键决策，编号 D1…：背景/候选/理由/可逆性
+│   └── L2-process/           # 怎么验收
+│       ├── acceptance.md     # 验收项，编号 A1…，写行为不写代码
+│       └── testcase.md       # 测试剧本，每步只引用 A 号，不定义新标准
+├── CLAUDE.md 等入口文件       # 追加 GSDD 段指向 ssot/README.md（一个入口都没有才新建 CLAUDE.md）
+├── tests/README.md           # 测试标注 A 编号的引用约定，/gsdd-audit 编号对账依据
+├── .graphifyignore           # 图谱防护文件（详见「图谱防护」节）
+└── .cbmignore                # 同上，两文件内容相同
 ```
+
+入口接线只追加不覆盖：检测 `CLAUDE.md`、`AGENTS.md`、`GEMINI.md`、`.cursorrules`、`.cursor/rules`、`.github/copilot-instructions.md`，已含 GSDD 段的跳过；已有 `tests/` 时只补 `README.md`，不动现有测试。
 
 ## 安装
 

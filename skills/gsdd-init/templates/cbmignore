@@ -1,5 +1,63 @@
 # 图谱索引排除声明（GSDD 防护文件）
-# 用途：防止规范目录被代码图谱工具（graphify / codebase-memory-mcp）索引为事实来源。
+# 用途一：防止规范目录被代码图谱工具（graphify / codebase-memory-mcp）索引为事实来源。
 # 图谱是索引，不是事实来源；ssot/ 的唯一出处地位不得被图谱稀释。
+# 用途二：构建产物、本地临时文件与各工具会话/状态不入图谱，图谱只保留源码与有效文档。
+
+# ── GSDD 规范防护（唯一出处，永不索引）──
 ssot/
 evidence/
+
+# ── 构建/打包产物（graphify 默认已按目录名剪枝同名目录，显式声明防工具版本变更）──
+build/
+dist/
+*.log
+
+# ── 本地临时产物（不入库的工作产物）──
+devlog/
+exports/
+tmp/
+tmp-debug/
+.scratch/
+
+# ── AI 编程工具会话/状态目录（ZCode/Claude Code/Codex/Trae/Qoder/OpenCode 等伴侣工具一律不进图谱）──
+.zcode/
+.claude/
+.codex/
+.opencode/
+.trae/
+.qoder/
+.gemini/
+.qwen/
+.iflow/
+.codebuddy/
+.agents/
+.aider*
+.cursor/
+.windsurf/
+.codeium/
+.kilocode/
+.roo/
+.continue/
+.goose/
+.crush/
+.factory/
+.specstory/
+
+# ── IDE 工作区/缓存目录（JetBrains/VS Code/Visual Studio 等）──
+.idea/
+.vscode/
+.vs/
+.zed/
+.fleet/
+.history/
+
+# ── 图谱工具自身产物（防自索引/递归吸入）──
+graphify-out/
+.codebase-memory/
+.graphify/
+
+# ── OS 杂物 ──
+.DS_Store
+Thumbs.db
+
+# ── 项目私有：本地密钥/运行时配置按需自行追加（不入库的敏感文件挡在图谱外）──
