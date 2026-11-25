@@ -29,6 +29,10 @@ disable-model-invocation: true
 
 简报留在对话里，不落盘（ssot/ 与 evidence/ 都不放）。
 
+## 版本标记与同步（多人协作时把门）
+
+简报头部须写明所读 ssot/ 的 commit 号；多人协作时 `/gsdd-change` 与 `/gsdd-accept` 开头比对该号——主干有更新（他人合入 L0/L1/L2 变更）→ 简报开头标红「ssot/ 落后主干，先重跑 /gsdd-load 刷新简报」再动手。`/gsdd-load` 开头先 `git fetch`：本地 ssot/ 落后主干时按此标红，不许静默按旧事实出简报。
+
 ## 超限处理（优先级锁死，溢出必须可见）
 
 判定按**行数**执行——agent 数不了 token，但数得了行：简报超过 120 行（默认阈值，约 2000 token，以 `ssot/README.md` 头部声明为准）即超限。超限时压缩优先级锁死：
